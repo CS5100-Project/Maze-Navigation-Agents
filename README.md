@@ -25,5 +25,5 @@ pip install -r requirements.txt
 - `environments/`: Contains the maze environment implementation
 - `agents/`: Contains the Q-learning agent implementation
 - `utils/`: Utility functions for visualization and data handling
-<!-- - `config/`: Configuration files for different experiments -->
 - `experiments/`: Training scripts and experiments
+<!-- - `config/`: Configuration files for different experiments -->
