@@ -16,24 +16,6 @@ from environments.maze_env import MazeEnv
 from agents.q_learning_agent import QLearningAgent
 
 
-import sys
-import os
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-import numpy as np
-import matplotlib.pyplot as plt
-from datetime import datetime
-import json
-import argparse
-from typing import Dict, List, Tuple
-import logging
-import time
-
-from environments.maze_env import MazeEnv
-from agents.q_learning_agent import QLearningAgent
-
-
 class ExperimentManager:
     """
     Manages the training process, logging, and visualization.
