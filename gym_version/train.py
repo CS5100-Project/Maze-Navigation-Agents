@@ -12,8 +12,10 @@ from typing import Dict, List, Tuple
 import logging
 import time
 
-from environments.maze_env import MazeEnv
-from agents.q_learning_agent import QLearningAgent
+from gym_version.maze_env import MazeEnv
+from gym_version.q_learning_agent import QLearningAgent
+
+from utils.visualizer import TrainingVisualizer
 
 
 class ExperimentManager:
@@ -31,7 +33,7 @@ class ExperimentManager:
         # Create directories first
         self.setup_directories()
 
-        # Then initialize logging
+        # Initialize logging
         self.setup_logging(exp_name)
 
         # Create environment and agent
@@ -44,6 +46,9 @@ class ExperimentManager:
         self.env_config = env_config
         self.agent_config = agent_config
         self.training_config = training_config
+
+        # Initialize visualizer
+        self.visualizer = TrainingVisualizer()
 
         # Training metrics
         self.episode_rewards: List[float] = []
@@ -102,95 +107,49 @@ class ExperimentManager:
         self.agent.save(checkpoint_path)
         self.logger.info(f"Checkpoint saved: {checkpoint_path}")
 
-    def plot_training_curves(self) -> None:
-        """Plot and save training curves."""
-        fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(10, 15))
-
-        # Plot rewards
-        ax1.plot(self.episode_rewards)
-        ax1.set_title("Episode Rewards")
-        ax1.set_xlabel("Episode")
-        ax1.set_ylabel("Reward")
-
-        # Plot episode lengths
-        ax2.plot(self.episode_lengths)
-        ax2.set_title("Episode Lengths")
-        ax2.set_xlabel("Episode")
-        ax2.set_ylabel("Steps")
-
-        # Plot success rate
-        ax3.plot(self.success_rate)
-        ax3.set_title("Success Rate (100-episode moving average)")
-        ax3.set_xlabel("Episode")
-        ax3.set_ylabel("Success Rate")
-        ax3.set_ylim([0, 1])
-
-        plt.tight_layout()
-        plot_file = os.path.join(
-            self.dirs["plots"], f"{self.exp_name}_training_curves.png"
-        )
-        plt.savefig(plot_file)
-        plt.close()
-
     def train(self) -> None:
-        """Main training loop."""
         max_episodes = self.training_config["max_episodes"]
         eval_interval = self.training_config["eval_interval"]
         save_interval = self.training_config["save_interval"]
 
-        # Save initial configurations
         self.save_configs()
-
-        self.logger.info("Starting training...")
-        self.logger.info(f"Training for {max_episodes} episodes")
+        self.logger.info("Starting training (Gym Version)...")
 
         start_time = time.time()
-        success_window = []
 
         for episode in range(1, max_episodes + 1):
             episode_reward, episode_length, success = self.run_episode(training=True)
 
-            # Store metrics
-            self.episode_rewards.append(episode_reward)
-            self.episode_lengths.append(episode_length)
-            success_window.append(success)
+            # Update visualizer and get metrics
+            metrics = self.visualizer.update(episode_reward, episode_length, success)
 
-            # Calculate success rate over last 100 episodes
-            if len(success_window) > 100:
-                success_window.pop(0)
-            success_rate = sum(success_window) / len(success_window)
-            self.success_rate.append(success_rate)
-
-            # Log progress
             if episode % 10 == 0:
                 self.logger.info(
                     f"Episode {episode}/{max_episodes} - "
                     f"Reward: {episode_reward:.2f} - "
                     f"Steps: {episode_length} - "
-                    f"Success Rate: {success_rate:.2%} - "
+                    f"Success Rate: {metrics['success_rate']:.2%} - "
                     f"Epsilon: {self.agent.epsilon:.3f}"
                 )
 
-            # Evaluation
             if episode % eval_interval == 0:
                 self.evaluate()
 
-            # Save checkpoint
             if episode % save_interval == 0:
                 self.save_checkpoint(episode)
+                self.visualizer.plot_training_curves(implementation="gym")
 
-            # Early stopping if success rate is high enough
-            if success_rate >= 0.95 and len(success_window) == 100:
+            if metrics["success_rate"] >= 0.95:
                 self.logger.info("Early stopping: 95% success rate achieved!")
                 break
 
         training_time = time.time() - start_time
         self.logger.info(f"Training completed in {training_time:.2f} seconds")
 
-        # Final evaluation and saving
         self.evaluate()
         self.save_checkpoint("final")
-        self.plot_training_curves()
+        self.visualizer.plot_training_curves(implementation="gym")
+        self.visualizer.save_metrics(implementation="gym")
 
     def run_episode(self, training: bool = True) -> Tuple[float, int, bool]:
         """Run a single episode."""
@@ -305,11 +264,7 @@ def main():
         "batch_size": 32,
     }
 
-    training_config = {
-        "max_episodes": 1000, 
-        "eval_interval": 20, 
-        "save_interval": 100
-    }
+    training_config = {"max_episodes": 1000, "eval_interval": 20, "save_interval": 100}
 
     # Create and run experiment
     experiment = ExperimentManager(

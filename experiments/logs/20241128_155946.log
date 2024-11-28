@@ -1,0 +1,32 @@
+2024-11-28 15:59:46,675 - INFO - Starting training...
+2024-11-28 15:59:46,675 - INFO - Training for 1000 episodes
+2024-11-28 15:59:47,334 - INFO - Episode 10/1000 - Reward: 51.20 - Steps: 40 - Success Rate: 70.00% - Epsilon: 0.943
+2024-11-28 15:59:48,176 - INFO - Episode 20/1000 - Reward: -17.73 - Steps: 100 - Success Rate: 65.00% - Epsilon: 0.875
+2024-11-28 15:59:48,750 - INFO - Episode 30/1000 - Reward: 50.40 - Steps: 16 - Success Rate: 66.67% - Epsilon: 0.826
+2024-11-28 15:59:49,005 - INFO - Episode 40/1000 - Reward: 49.32 - Steps: 27 - Success Rate: 75.00% - Epsilon: 0.805
+2024-11-28 15:59:49,331 - INFO - Episode 50/1000 - Reward: 55.40 - Steps: 11 - Success Rate: 80.00% - Epsilon: 0.779
+2024-11-28 15:59:49,331 - INFO - 
+Starting evaluation...
+2024-11-28 16:00:00,052 - INFO - Evaluation results over 10 episodes:
+Average Reward: 51.44
+Average Length: 10.00
+Success Rate: 100.00%
+
+2024-11-28 16:00:00,521 - INFO - Episode 60/1000 - Reward: 43.28 - Steps: 38 - Success Rate: 81.67% - Epsilon: 0.745
+2024-11-28 16:00:00,917 - INFO - Episode 70/1000 - Reward: 55.40 - Steps: 73 - Success Rate: 84.29% - Epsilon: 0.716
+2024-11-28 16:00:01,124 - INFO - Episode 80/1000 - Reward: 49.84 - Steps: 24 - Success Rate: 86.25% - Epsilon: 0.702
+2024-11-28 16:00:01,480 - INFO - Episode 90/1000 - Reward: 49.84 - Steps: 24 - Success Rate: 87.78% - Epsilon: 0.677
+2024-11-28 16:00:01,892 - INFO - Episode 100/1000 - Reward: 54.32 - Steps: 22 - Success Rate: 88.00% - Epsilon: 0.650
+2024-11-28 16:00:01,892 - INFO - 
+Starting evaluation...
+2024-11-28 16:00:11,860 - INFO - Evaluation results over 10 episodes:
+Average Reward: 51.44
+Average Length: 10.00
+Success Rate: 100.00%
+
+2024-11-28 16:00:12,234 - INFO - Episode 110/1000 - Reward: 52.80 - Steps: 26 - Success Rate: 91.00% - Epsilon: 0.627
+2024-11-28 16:00:12,714 - INFO - Episode 120/1000 - Reward: 53.92 - Steps: 10 - Success Rate: 95.00% - Epsilon: 0.597
+2024-11-28 16:00:12,714 - INFO - Early stopping: 95% success rate achieved!
+2024-11-28 16:00:12,714 - INFO - Training completed in 26.04 seconds
+2024-11-28 16:00:12,714 - INFO - 
+Starting evaluation...

@@ -1,5 +1,5 @@
-from standalone_maze_env import MazeEnv
-from standalone_q_learning_agent import QLearningAgent
+from custom_version.maze_env import MazeEnv
+from custom_version.q_learning_agent import QLearningAgent
 import numpy as np
 import json
 import os
@@ -164,6 +164,7 @@ import matplotlib.pyplot as plt
 # if __name__ == "__main__":
 #     main()
 
+
 class TrainingVisualizer:
     def __init__(self):
         self.episode_rewards: List[float] = []
@@ -187,21 +188,21 @@ class TrainingVisualizer:
 
         # Plot episode rewards
         ax1.plot(self.episode_rewards)
-        ax1.set_title('Episode Rewards')
-        ax1.set_xlabel('Episode')
-        ax1.set_ylabel('Reward')
+        ax1.set_title("Episode Rewards")
+        ax1.set_xlabel("Episode")
+        ax1.set_ylabel("Reward")
 
         # Plot episode lengths
         ax2.plot(self.episode_lengths)
-        ax2.set_title('Episode Lengths')
-        ax2.set_xlabel('Episode')
-        ax2.set_ylabel('Steps')
+        ax2.set_title("Episode Lengths")
+        ax2.set_xlabel("Episode")
+        ax2.set_ylabel("Steps")
 
         # Plot success rate
         ax3.plot(self.success_rates)
-        ax3.set_title('Success Rate (100-episode moving average)')
-        ax3.set_xlabel('Episode')
-        ax3.set_ylabel('Success Rate')
+        ax3.set_title("Success Rate (100-episode moving average)")
+        ax3.set_xlabel("Episode")
+        ax3.set_ylabel("Success Rate")
         ax3.set_ylim([0, 1])
 
         plt.tight_layout()
@@ -241,29 +242,32 @@ class ExperimentManager:
             self.visualizer.update(
                 reward=episode_reward,
                 length=episode_steps,
-                success=info.get("success", False)
+                success=info.get("success", False),
             )
 
             if episode % 10 == 0:
-                success_rate = (self.visualizer.success_rates[-1]
-                                if self.visualizer.success_rates else 0)
-                print(f"Episode {episode}/{max_episodes} - "
-                      f"Reward: {episode_reward:.2f} - "
-                      f"Steps: {episode_steps} - "
-                      f"Success Rate: {success_rate:.2%} - "
-                      f"Epsilon: {self.agent.epsilon:.3f}")
+                success_rate = (
+                    self.visualizer.success_rates[-1]
+                    if self.visualizer.success_rates
+                    else 0
+                )
+                print(
+                    f"Episode {episode}/{max_episodes} - "
+                    f"Reward: {episode_reward:.2f} - "
+                    f"Steps: {episode_steps} - "
+                    f"Success Rate: {success_rate:.2%} - "
+                    f"Epsilon: {self.agent.epsilon:.3f}"
+                )
 
         # Generate and save plots
         self.visualizer.plot_curves("20241119_standalone_training_curves.png")
-        print("Training completed. Plots saved to 20241119_standalone_training_curves.png")
+        print(
+            "Training completed. Plots saved to 20241119_standalone_training_curves.png"
+        )
 
 
 def main():
-    env_config = {
-        "maze_size": 8,
-        "num_obstacles": 5,
-        "max_steps": 200
-    }
+    env_config = {"maze_size": 8, "num_obstacles": 5, "max_steps": 200}
 
     agent_config = {
         "learning_rate": 0.1,
@@ -272,17 +276,15 @@ def main():
         "epsilon_min": 0.01,
         "epsilon_decay": 0.995,
         "buffer_size": 10000,
-        "batch_size": 32
+        "batch_size": 32,
     }
 
-    training_config = {
-        "max_episodes": 1000
-    }
+    training_config = {"max_episodes": 1000}
 
     experiment = ExperimentManager(
         env_config=env_config,
         agent_config=agent_config,
-        training_config=training_config
+        training_config=training_config,
     )
     experiment.train()
 
