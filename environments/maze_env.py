@@ -215,9 +215,13 @@ class MazeEnv(gym.Env):
         new_pos = (self.agent_pos[0] + dx, self.agent_pos[1] + dy)
 
         # Initialize reward
-        reward = -0.1  # Small negative reward for each step
+        reward = -0.01  # Small negative reward for each step
         done = False
         info = {}
+
+        # Calculate distance to goal before and after move
+        old_distance = abs(self.agent_pos[0] - self.goal_pos[0]) + abs(self.agent_pos[1] - self.goal_pos[1])
+        new_distance = abs(new_pos[0] - self.goal_pos[0]) + abs(new_pos[1] - self.goal_pos[1])
 
         # Check if the move is valid
         if (
@@ -227,35 +231,29 @@ class MazeEnv(gym.Env):
         ):
             self.agent_pos = new_pos
 
-            # Add exploration bonus for new states
-            if new_pos not in self.visited_states:
-                reward += 0.1
-                self.visited_states.add(new_pos)
+            # Reward for moving closer to goal
+            if new_distance < old_distance:
+                reward += 1.0
+            elif new_distance > old_distance:
+                reward -= 0.5
 
+            self.agent_pos = new_pos
+            
             # Check if agent reached the goal
             if new_pos == self.goal_pos:
-                reward = 10.0
+                reward = 50.0  # Much higher goal reward
                 done = True
-                info["success"] = True
-
-            # Check for hazards
-            if self.random_hazards and self.hazards[new_pos]:
-                reward -= 5.0
-                done = True
-                info["hazard_collision"] = True
+                info['success'] = True
 
         else:
-            reward -= 1.0  # Penalty for hitting a wall
-            info["wall_collision"] = True
+            reward = -1.0  # Small penalty for invalid moves
+            info['wall_collision'] = True
 
-        # Update dynamic elements
-        self._move_walls()
-        self._update_goal()
-
-        # Check if maximum steps reached
+        # Timeout penalty
         if self.steps_taken >= self.max_steps:
             done = True
-            info["timeout"] = True
+            reward = -10.0  # Penalty for not reaching goal
+            info['timeout'] = True
 
         return self._get_observation(), reward, done, info
 

@@ -1,0 +1,186 @@
+2024-11-27 15:14:24,146 - INFO - Starting training...
+2024-11-27 15:14:24,147 - INFO - Training for 1000 episodes
+2024-11-27 15:14:25,729 - INFO - Episode 10/1000 - Reward: -114.50 - Steps: 200 - Success Rate: 60.00% - Epsilon: 0.010
+2024-11-27 15:14:28,272 - INFO - Episode 20/1000 - Reward: -110.80 - Steps: 200 - Success Rate: 35.00% - Epsilon: 0.010
+2024-11-27 15:14:30,467 - INFO - Episode 30/1000 - Reward: -120.00 - Steps: 200 - Success Rate: 36.67% - Epsilon: 0.010
+2024-11-27 15:14:32,202 - INFO - Episode 40/1000 - Reward: 10.00 - Steps: 3 - Success Rate: 37.50% - Epsilon: 0.010
+2024-11-27 15:14:34,985 - INFO - Episode 50/1000 - Reward: -119.90 - Steps: 200 - Success Rate: 30.00% - Epsilon: 0.010
+2024-11-27 15:14:37,239 - INFO - Episode 60/1000 - Reward: -123.90 - Steps: 200 - Success Rate: 30.00% - Epsilon: 0.010
+2024-11-27 15:14:39,700 - INFO - Episode 70/1000 - Reward: -166.00 - Steps: 200 - Success Rate: 28.57% - Epsilon: 0.010
+2024-11-27 15:14:42,018 - INFO - Episode 80/1000 - Reward: -109.40 - Steps: 200 - Success Rate: 27.50% - Epsilon: 0.010
+2024-11-27 15:14:44,563 - INFO - Episode 90/1000 - Reward: -88.00 - Steps: 200 - Success Rate: 25.56% - Epsilon: 0.010
+2024-11-27 15:14:47,143 - INFO - Episode 100/1000 - Reward: -132.80 - Steps: 200 - Success Rate: 24.00% - Epsilon: 0.010
+2024-11-27 15:14:47,143 - INFO - 
+Starting evaluation...
+2024-11-27 15:18:09,987 - INFO - Evaluation results over 10 episodes:
+Average Reward: -216.48
+Average Length: 200.00
+Success Rate: 0.00%
+
+2024-11-27 15:18:12,504 - INFO - Episode 110/1000 - Reward: -201.70 - Steps: 200 - Success Rate: 19.00% - Epsilon: 0.010
+2024-11-27 15:18:15,049 - INFO - Episode 120/1000 - Reward: -190.70 - Steps: 200 - Success Rate: 19.00% - Epsilon: 0.010
+2024-11-27 15:18:17,824 - INFO - Episode 130/1000 - Reward: -133.10 - Steps: 200 - Success Rate: 15.00% - Epsilon: 0.010
+2024-11-27 15:18:20,256 - INFO - Episode 140/1000 - Reward: -204.30 - Steps: 200 - Success Rate: 13.00% - Epsilon: 0.010
+2024-11-27 15:18:23,032 - INFO - Episode 150/1000 - Reward: -133.50 - Steps: 200 - Success Rate: 14.00% - Epsilon: 0.010
+2024-11-27 15:18:25,479 - INFO - Episode 160/1000 - Reward: -170.80 - Steps: 200 - Success Rate: 13.00% - Epsilon: 0.010
+2024-11-27 15:18:28,332 - INFO - Episode 170/1000 - Reward: -169.20 - Steps: 200 - Success Rate: 11.00% - Epsilon: 0.010
+2024-11-27 15:18:31,000 - INFO - Episode 180/1000 - Reward: -155.10 - Steps: 200 - Success Rate: 11.00% - Epsilon: 0.010
+2024-11-27 15:18:33,781 - INFO - Episode 190/1000 - Reward: -183.10 - Steps: 200 - Success Rate: 10.00% - Epsilon: 0.010
+2024-11-27 15:18:36,262 - INFO - Episode 200/1000 - Reward: -117.10 - Steps: 200 - Success Rate: 10.00% - Epsilon: 0.010
+2024-11-27 15:18:36,262 - INFO - 
+Starting evaluation...
+2024-11-27 15:20:58,393 - INFO - Evaluation results over 10 episodes:
+Average Reward: -148.47
+Average Length: 141.10
+Success Rate: 30.00%
+
+2024-11-27 15:20:58,759 - INFO - Checkpoint saved: experiments/checkpoints/20241127_151424_episode_200.pkl
+2024-11-27 15:21:01,270 - INFO - Episode 210/1000 - Reward: -151.80 - Steps: 200 - Success Rate: 11.00% - Epsilon: 0.010
+2024-11-27 15:21:03,785 - INFO - Episode 220/1000 - Reward: -185.90 - Steps: 200 - Success Rate: 11.00% - Epsilon: 0.010
+2024-11-27 15:21:06,369 - INFO - Episode 230/1000 - Reward: -113.60 - Steps: 200 - Success Rate: 12.00% - Epsilon: 0.010
+2024-11-27 15:21:08,900 - INFO - Episode 240/1000 - Reward: -151.80 - Steps: 200 - Success Rate: 11.00% - Epsilon: 0.010
+2024-11-27 15:21:11,197 - INFO - Episode 250/1000 - Reward: 10.00 - Steps: 1 - Success Rate: 12.00% - Epsilon: 0.010
+2024-11-27 15:21:13,550 - INFO - Episode 260/1000 - Reward: -204.30 - Steps: 200 - Success Rate: 13.00% - Epsilon: 0.010
+2024-11-27 15:21:15,918 - INFO - Episode 270/1000 - Reward: -174.10 - Steps: 200 - Success Rate: 15.00% - Epsilon: 0.010
+2024-11-27 15:21:18,157 - INFO - Episode 280/1000 - Reward: -188.50 - Steps: 200 - Success Rate: 15.00% - Epsilon: 0.010
+2024-11-27 15:21:20,017 - INFO - Episode 290/1000 - Reward: -30.70 - Steps: 42 - Success Rate: 20.00% - Epsilon: 0.010
+2024-11-27 15:21:22,328 - INFO - Episode 300/1000 - Reward: -203.80 - Steps: 200 - Success Rate: 21.00% - Epsilon: 0.010
+2024-11-27 15:21:22,328 - INFO - 
+Starting evaluation...
+2024-11-27 15:24:43,710 - INFO - Evaluation results over 10 episodes:
+Average Reward: -214.83
+Average Length: 200.00
+Success Rate: 0.00%
+
+2024-11-27 15:24:45,902 - INFO - Episode 310/1000 - Reward: -85.40 - Steps: 200 - Success Rate: 23.00% - Epsilon: 0.010
+2024-11-27 15:24:48,572 - INFO - Episode 320/1000 - Reward: -139.40 - Steps: 200 - Success Rate: 23.00% - Epsilon: 0.010
+2024-11-27 15:24:51,187 - INFO - Episode 330/1000 - Reward: -155.90 - Steps: 200 - Success Rate: 23.00% - Epsilon: 0.010
+2024-11-27 15:24:53,915 - INFO - Episode 340/1000 - Reward: -124.90 - Steps: 200 - Success Rate: 23.00% - Epsilon: 0.010
+2024-11-27 15:24:56,775 - INFO - Episode 350/1000 - Reward: -118.50 - Steps: 200 - Success Rate: 21.00% - Epsilon: 0.010
+2024-11-27 15:24:59,209 - INFO - Episode 360/1000 - Reward: -155.40 - Steps: 200 - Success Rate: 20.00% - Epsilon: 0.010
+2024-11-27 15:25:01,823 - INFO - Episode 370/1000 - Reward: 10.00 - Steps: 4 - Success Rate: 19.00% - Epsilon: 0.010
+2024-11-27 15:25:04,357 - INFO - Episode 380/1000 - Reward: -167.10 - Steps: 200 - Success Rate: 19.00% - Epsilon: 0.010
+2024-11-27 15:25:06,664 - INFO - Episode 390/1000 - Reward: -125.50 - Steps: 200 - Success Rate: 16.00% - Epsilon: 0.010
+2024-11-27 15:25:09,567 - INFO - Episode 400/1000 - Reward: -202.60 - Steps: 200 - Success Rate: 14.00% - Epsilon: 0.010
+2024-11-27 15:25:09,567 - INFO - 
+Starting evaluation...
+2024-11-27 15:28:31,866 - INFO - Evaluation results over 10 episodes:
+Average Reward: -216.37
+Average Length: 200.00
+Success Rate: 0.00%
+
+2024-11-27 15:28:32,584 - INFO - Checkpoint saved: experiments/checkpoints/20241127_151424_episode_400.pkl
+2024-11-27 15:28:35,079 - INFO - Episode 410/1000 - Reward: -197.90 - Steps: 200 - Success Rate: 12.00% - Epsilon: 0.010
+2024-11-27 15:28:37,997 - INFO - Episode 420/1000 - Reward: -212.30 - Steps: 200 - Success Rate: 11.00% - Epsilon: 0.010
+2024-11-27 15:28:40,880 - INFO - Episode 430/1000 - Reward: -137.00 - Steps: 200 - Success Rate: 10.00% - Epsilon: 0.010
+2024-11-27 15:28:43,568 - INFO - Episode 440/1000 - Reward: -146.20 - Steps: 200 - Success Rate: 10.00% - Epsilon: 0.010
+2024-11-27 15:28:46,150 - INFO - Episode 450/1000 - Reward: -146.20 - Steps: 200 - Success Rate: 12.00% - Epsilon: 0.010
+2024-11-27 15:28:48,361 - INFO - Episode 460/1000 - Reward: -98.40 - Steps: 200 - Success Rate: 13.00% - Epsilon: 0.010
+2024-11-27 15:28:50,923 - INFO - Episode 470/1000 - Reward: -140.00 - Steps: 147 - Success Rate: 14.00% - Epsilon: 0.010
+2024-11-27 15:28:53,093 - INFO - Episode 480/1000 - Reward: -99.30 - Steps: 200 - Success Rate: 15.00% - Epsilon: 0.010
+2024-11-27 15:28:55,786 - INFO - Episode 490/1000 - Reward: -157.70 - Steps: 200 - Success Rate: 14.00% - Epsilon: 0.010
+2024-11-27 15:28:58,330 - INFO - Episode 500/1000 - Reward: -166.30 - Steps: 200 - Success Rate: 17.00% - Epsilon: 0.010
+2024-11-27 15:28:58,330 - INFO - 
+Starting evaluation...
+2024-11-27 15:32:19,737 - INFO - Evaluation results over 10 episodes:
+Average Reward: -217.91
+Average Length: 200.00
+Success Rate: 0.00%
+
+2024-11-27 15:32:21,899 - INFO - Episode 510/1000 - Reward: -71.80 - Steps: 88 - Success Rate: 19.00% - Epsilon: 0.010
+2024-11-27 15:32:24,120 - INFO - Episode 520/1000 - Reward: -126.30 - Steps: 200 - Success Rate: 22.00% - Epsilon: 0.010
+2024-11-27 15:32:27,080 - INFO - Episode 530/1000 - Reward: -177.20 - Steps: 200 - Success Rate: 22.00% - Epsilon: 0.010
+2024-11-27 15:32:29,839 - INFO - Episode 540/1000 - Reward: -34.30 - Steps: 60 - Success Rate: 22.00% - Epsilon: 0.010
+2024-11-27 15:32:32,199 - INFO - Episode 550/1000 - Reward: -129.00 - Steps: 200 - Success Rate: 23.00% - Epsilon: 0.010
+2024-11-27 15:32:34,839 - INFO - Episode 560/1000 - Reward: -92.20 - Steps: 129 - Success Rate: 23.00% - Epsilon: 0.010
+2024-11-27 15:32:37,513 - INFO - Episode 570/1000 - Reward: -206.80 - Steps: 200 - Success Rate: 22.00% - Epsilon: 0.010
+2024-11-27 15:32:40,691 - INFO - Episode 580/1000 - Reward: -190.90 - Steps: 200 - Success Rate: 19.00% - Epsilon: 0.010
+2024-11-27 15:32:43,195 - INFO - Episode 590/1000 - Reward: -177.80 - Steps: 200 - Success Rate: 20.00% - Epsilon: 0.010
+2024-11-27 15:32:45,808 - INFO - Episode 600/1000 - Reward: -117.50 - Steps: 200 - Success Rate: 19.00% - Epsilon: 0.010
+2024-11-27 15:32:45,808 - INFO - 
+Starting evaluation...
+2024-11-27 15:35:47,903 - INFO - Evaluation results over 10 episodes:
+Average Reward: -194.91
+Average Length: 180.30
+Success Rate: 10.00%
+
+2024-11-27 15:35:48,953 - INFO - Checkpoint saved: experiments/checkpoints/20241127_151424_episode_600.pkl
+2024-11-27 15:35:51,597 - INFO - Episode 610/1000 - Reward: -98.50 - Steps: 200 - Success Rate: 17.00% - Epsilon: 0.010
+2024-11-27 15:35:53,863 - INFO - Episode 620/1000 - Reward: -58.20 - Steps: 72 - Success Rate: 17.00% - Epsilon: 0.010
+2024-11-27 15:35:56,360 - INFO - Episode 630/1000 - Reward: -96.00 - Steps: 109 - Success Rate: 19.00% - Epsilon: 0.010
+2024-11-27 15:35:58,743 - INFO - Episode 640/1000 - Reward: 10.00 - Steps: 3 - Success Rate: 20.00% - Epsilon: 0.010
+2024-11-27 15:36:00,467 - INFO - Episode 650/1000 - Reward: -94.40 - Steps: 200 - Success Rate: 21.00% - Epsilon: 0.010
+2024-11-27 15:36:03,118 - INFO - Episode 660/1000 - Reward: -201.80 - Steps: 200 - Success Rate: 19.00% - Epsilon: 0.010
+2024-11-27 15:36:05,721 - INFO - Episode 670/1000 - Reward: -158.50 - Steps: 166 - Success Rate: 21.00% - Epsilon: 0.010
+2024-11-27 15:36:08,702 - INFO - Episode 680/1000 - Reward: -137.50 - Steps: 200 - Success Rate: 21.00% - Epsilon: 0.010
+2024-11-27 15:36:11,684 - INFO - Episode 690/1000 - Reward: -114.40 - Steps: 200 - Success Rate: 19.00% - Epsilon: 0.010
+2024-11-27 15:36:14,579 - INFO - Episode 700/1000 - Reward: -110.80 - Steps: 200 - Success Rate: 18.00% - Epsilon: 0.010
+2024-11-27 15:36:14,579 - INFO - 
+Starting evaluation...
+2024-11-27 15:39:15,973 - INFO - Evaluation results over 10 episodes:
+Average Reward: -194.58
+Average Length: 180.20
+Success Rate: 10.00%
+
+2024-11-27 15:39:18,499 - INFO - Episode 710/1000 - Reward: -109.30 - Steps: 200 - Success Rate: 17.00% - Epsilon: 0.010
+2024-11-27 15:39:20,862 - INFO - Episode 720/1000 - Reward: -156.00 - Steps: 200 - Success Rate: 16.00% - Epsilon: 0.010
+2024-11-27 15:39:23,100 - INFO - Episode 730/1000 - Reward: -208.10 - Steps: 200 - Success Rate: 16.00% - Epsilon: 0.010
+2024-11-27 15:39:25,839 - INFO - Episode 740/1000 - Reward: -98.00 - Steps: 200 - Success Rate: 15.00% - Epsilon: 0.010
+2024-11-27 15:39:28,306 - INFO - Episode 750/1000 - Reward: -156.40 - Steps: 200 - Success Rate: 12.00% - Epsilon: 0.010
+2024-11-27 15:39:31,090 - INFO - Episode 760/1000 - Reward: -168.60 - Steps: 200 - Success Rate: 12.00% - Epsilon: 0.010
+2024-11-27 15:39:33,809 - INFO - Episode 770/1000 - Reward: -167.00 - Steps: 200 - Success Rate: 11.00% - Epsilon: 0.010
+2024-11-27 15:39:36,678 - INFO - Episode 780/1000 - Reward: -186.20 - Steps: 200 - Success Rate: 11.00% - Epsilon: 0.010
+2024-11-27 15:39:38,901 - INFO - Episode 790/1000 - Reward: -139.40 - Steps: 200 - Success Rate: 14.00% - Epsilon: 0.010
+2024-11-27 15:39:41,494 - INFO - Episode 800/1000 - Reward: -140.30 - Steps: 200 - Success Rate: 15.00% - Epsilon: 0.010
+2024-11-27 15:39:41,495 - INFO - 
+Starting evaluation...
+2024-11-27 15:42:22,892 - INFO - Evaluation results over 10 episodes:
+Average Reward: -172.79
+Average Length: 160.30
+Success Rate: 20.00%
+
+2024-11-27 15:42:24,305 - INFO - Checkpoint saved: experiments/checkpoints/20241127_151424_episode_800.pkl
+2024-11-27 15:42:26,801 - INFO - Episode 810/1000 - Reward: -115.70 - Steps: 127 - Success Rate: 16.00% - Epsilon: 0.010
+2024-11-27 15:42:29,302 - INFO - Episode 820/1000 - Reward: -171.00 - Steps: 200 - Success Rate: 16.00% - Epsilon: 0.010
+2024-11-27 15:42:31,198 - INFO - Episode 830/1000 - Reward: -206.80 - Steps: 200 - Success Rate: 18.00% - Epsilon: 0.010
+2024-11-27 15:42:33,117 - INFO - Episode 840/1000 - Reward: -188.00 - Steps: 200 - Success Rate: 21.00% - Epsilon: 0.010
+2024-11-27 15:42:35,703 - INFO - Episode 850/1000 - Reward: -162.10 - Steps: 200 - Success Rate: 21.00% - Epsilon: 0.010
+2024-11-27 15:42:38,160 - INFO - Episode 860/1000 - Reward: -209.00 - Steps: 200 - Success Rate: 22.00% - Epsilon: 0.010
+2024-11-27 15:42:41,022 - INFO - Episode 870/1000 - Reward: -186.70 - Steps: 200 - Success Rate: 20.00% - Epsilon: 0.010
+2024-11-27 15:42:43,842 - INFO - Episode 880/1000 - Reward: -143.70 - Steps: 200 - Success Rate: 21.00% - Epsilon: 0.010
+2024-11-27 15:42:46,159 - INFO - Episode 890/1000 - Reward: -163.20 - Steps: 200 - Success Rate: 20.00% - Epsilon: 0.010
+2024-11-27 15:42:49,026 - INFO - Episode 900/1000 - Reward: -129.80 - Steps: 200 - Success Rate: 18.00% - Epsilon: 0.010
+2024-11-27 15:42:49,026 - INFO - 
+Starting evaluation...
+2024-11-27 15:45:30,976 - INFO - Evaluation results over 10 episodes:
+Average Reward: -172.24
+Average Length: 160.80
+Success Rate: 20.00%
+
+2024-11-27 15:45:32,949 - INFO - Episode 910/1000 - Reward: -111.00 - Steps: 117 - Success Rate: 20.00% - Epsilon: 0.010
+2024-11-27 15:45:35,538 - INFO - Episode 920/1000 - Reward: -88.50 - Steps: 200 - Success Rate: 20.00% - Epsilon: 0.010
+2024-11-27 15:45:38,135 - INFO - Episode 930/1000 - Reward: -205.00 - Steps: 200 - Success Rate: 17.00% - Epsilon: 0.010
+2024-11-27 15:45:40,764 - INFO - Episode 940/1000 - Reward: -14.30 - Steps: 29 - Success Rate: 14.00% - Epsilon: 0.010
+2024-11-27 15:45:43,054 - INFO - Episode 950/1000 - Reward: 10.00 - Steps: 1 - Success Rate: 15.00% - Epsilon: 0.010
+2024-11-27 15:45:45,565 - INFO - Episode 960/1000 - Reward: -117.10 - Steps: 200 - Success Rate: 15.00% - Epsilon: 0.010
+2024-11-27 15:45:48,210 - INFO - Episode 970/1000 - Reward: -201.90 - Steps: 200 - Success Rate: 16.00% - Epsilon: 0.010
+2024-11-27 15:45:50,827 - INFO - Episode 980/1000 - Reward: -192.60 - Steps: 200 - Success Rate: 16.00% - Epsilon: 0.010
+2024-11-27 15:45:53,425 - INFO - Episode 990/1000 - Reward: -109.70 - Steps: 200 - Success Rate: 15.00% - Epsilon: 0.010
+2024-11-27 15:45:55,811 - INFO - Episode 1000/1000 - Reward: -205.70 - Steps: 200 - Success Rate: 18.00% - Epsilon: 0.010
+2024-11-27 15:45:55,813 - INFO - 
+Starting evaluation...
+2024-11-27 15:49:17,349 - INFO - Evaluation results over 10 episodes:
+Average Reward: -218.46
+Average Length: 200.00
+Success Rate: 0.00%
+
+2024-11-27 15:49:19,029 - INFO - Checkpoint saved: experiments/checkpoints/20241127_151424_episode_1000.pkl
+2024-11-27 15:49:19,029 - INFO - Training completed in 2094.88 seconds
+2024-11-27 15:49:19,029 - INFO - 
+Starting evaluation...
+2024-11-27 15:52:20,470 - INFO - Evaluation results over 10 episodes:
+Average Reward: -193.26
+Average Length: 180.10
+Success Rate: 10.00%
+
+2024-11-27 15:52:22,251 - INFO - Checkpoint saved: experiments/checkpoints/20241127_151424_episode_final.pkl

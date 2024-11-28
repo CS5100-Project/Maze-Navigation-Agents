@@ -287,25 +287,29 @@ class ExperimentManager:
 def main():
     # Configuration
     env_config = {
-        "maze_size": 8,
-        "num_obstacles": 5,
-        "max_steps": 200,
+        "maze_size": 4,
+        "num_obstacles": 1,
+        "max_steps": 50,
         "enable_moving_walls": False,  # Start with simpler environment
         "dynamic_goal": False,
         "random_hazards": False,
     }
 
     agent_config = {
-        "learning_rate": 0.1,
-        "discount_factor": 0.95,
+        "learning_rate": 0.6,
+        "discount_factor": 0.99,
         "epsilon": 1.0,
-        "epsilon_min": 0.01,
-        "epsilon_decay": 0.995,
-        "buffer_size": 10000,
+        "epsilon_min": 0.05,
+        "epsilon_decay": 0.97,
+        "buffer_size": 5000,
         "batch_size": 32,
     }
 
-    training_config = {"max_episodes": 1000, "eval_interval": 100, "save_interval": 200}
+    training_config = {
+        "max_episodes": 1000, 
+        "eval_interval": 20, 
+        "save_interval": 100
+    }
 
     # Create and run experiment
     experiment = ExperimentManager(
