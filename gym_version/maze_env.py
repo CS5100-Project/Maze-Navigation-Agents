@@ -220,8 +220,12 @@ class MazeEnv(gym.Env):
         info = {}
 
         # Calculate distance to goal before and after move
-        old_distance = abs(self.agent_pos[0] - self.goal_pos[0]) + abs(self.agent_pos[1] - self.goal_pos[1])
-        new_distance = abs(new_pos[0] - self.goal_pos[0]) + abs(new_pos[1] - self.goal_pos[1])
+        old_distance = abs(self.agent_pos[0] - self.goal_pos[0]) + abs(
+            self.agent_pos[1] - self.goal_pos[1]
+        )
+        new_distance = abs(new_pos[0] - self.goal_pos[0]) + abs(
+            new_pos[1] - self.goal_pos[1]
+        )
 
         # Check if the move is valid
         if (
@@ -238,22 +242,22 @@ class MazeEnv(gym.Env):
                 reward -= 0.5
 
             self.agent_pos = new_pos
-            
+
             # Check if agent reached the goal
             if new_pos == self.goal_pos:
                 reward = 50.0  # Much higher goal reward
                 done = True
-                info['success'] = True
+                info["success"] = True
 
         else:
             reward = -1.0  # Small penalty for invalid moves
-            info['wall_collision'] = True
+            info["wall_collision"] = True
 
         # Timeout penalty
         if self.steps_taken >= self.max_steps:
             done = True
             reward = -10.0  # Penalty for not reaching goal
-            info['timeout'] = True
+            info["timeout"] = True
 
         return self._get_observation(), reward, done, info
 

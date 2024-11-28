@@ -5,10 +5,7 @@ from typing import Tuple, Dict
 
 class MazeEnv:
     def __init__(
-            self,
-            maze_size: int = 8,
-            num_obstacles: int = 5,
-            max_steps: int = 200
+        self, maze_size: int = 8, num_obstacles: int = 5, max_steps: int = 200
     ):
         self.maze_size = maze_size
         self.num_obstacles = num_obstacles
@@ -27,8 +24,12 @@ class MazeEnv:
     def _create_maze(self) -> None:
         self.walls = np.zeros((self.maze_size, self.maze_size), dtype=bool)
         obstacle_positions = random.sample(
-            [(i, j) for i in range(1, self.maze_size - 1) for j in range(1, self.maze_size - 1)],
-            self.num_obstacles
+            [
+                (i, j)
+                for i in range(1, self.maze_size - 1)
+                for j in range(1, self.maze_size - 1)
+            ],
+            self.num_obstacles,
         )
         for pos in obstacle_positions:
             self.walls[pos] = True
@@ -38,7 +39,9 @@ class MazeEnv:
         self.steps_taken = 0
 
         available_positions = [
-            (i, j) for i in range(self.maze_size) for j in range(self.maze_size)
+            (i, j)
+            for i in range(self.maze_size)
+            for j in range(self.maze_size)
             if not self.walls[i, j]
         ]
         self.agent_pos, self.goal_pos = random.sample(available_positions, 2)
@@ -63,9 +66,11 @@ class MazeEnv:
         done = False
         info = {}
 
-        if (0 <= new_pos[0] < self.maze_size and
-                0 <= new_pos[1] < self.maze_size and
-                not self.walls[new_pos]):
+        if (
+            0 <= new_pos[0] < self.maze_size
+            and 0 <= new_pos[1] < self.maze_size
+            and not self.walls[new_pos]
+        ):
             self.agent_pos = new_pos
 
             if new_pos == self.goal_pos:

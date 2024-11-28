@@ -6,15 +6,15 @@ from typing import Tuple, Dict
 
 class QLearningAgent:
     def __init__(
-            self,
-            action_space: int,
-            learning_rate: float = 0.1,
-            discount_factor: float = 0.95,
-            epsilon: float = 1.0,
-            epsilon_min: float = 0.01,
-            epsilon_decay: float = 0.995,
-            buffer_size: int = 10000,
-            batch_size: int = 32
+        self,
+        action_space: int,
+        learning_rate: float = 0.1,
+        discount_factor: float = 0.95,
+        epsilon: float = 1.0,
+        epsilon_min: float = 0.01,
+        epsilon_decay: float = 0.995,
+        buffer_size: int = 10000,
+        batch_size: int = 32,
     ):
         self.action_space = action_space
         self.lr = learning_rate
@@ -45,8 +45,14 @@ class QLearningAgent:
         state_key = self._state_to_key(state)
         return int(np.argmax(self.q_table[state_key]))
 
-    def store_experience(self, state: np.ndarray, action: int, reward: float,
-                         next_state: np.ndarray, done: bool) -> None:
+    def store_experience(
+        self,
+        state: np.ndarray,
+        action: int,
+        reward: float,
+        next_state: np.ndarray,
+        done: bool,
+    ) -> None:
         self.replay_buffer.append((state, action, reward, next_state, done))
         self.episode_rewards += reward
         self.total_steps += 1
@@ -63,7 +69,10 @@ class QLearningAgent:
 
             best_next_action = np.argmax(self.q_table[next_state_key])
             td_target = reward + (
-                0 if done else self.gamma * self.q_table[next_state_key][best_next_action])
+                0
+                if done
+                else self.gamma * self.q_table[next_state_key][best_next_action]
+            )
             td_error = td_target - self.q_table[state_key][action]
             self.q_table[state_key][action] += self.lr * td_error
 
@@ -82,8 +91,9 @@ class QLearningAgent:
             "total_episodes": self.episodes_completed,
             "total_steps": self.total_steps,
             "current_epsilon": self.epsilon,
-            "average_reward_last_100": np.mean(
-                self.training_rewards[-100:]) if self.training_rewards else 0,
+            "average_reward_last_100": (
+                np.mean(self.training_rewards[-100:]) if self.training_rewards else 0
+            ),
             "q_table_size": len(self.q_table),
             "buffer_size": len(self.replay_buffer),
         }

@@ -1,0 +1,24 @@
+{
+    "environment": {
+        "maze_size": 5,
+        "num_obstacles": 2,
+        "max_steps": 100,
+        "enable_moving_walls": false,
+        "dynamic_goal": false,
+        "random_hazards": false
+    },
+    "agent": {
+        "learning_rate": 0.2,
+        "discount_factor": 0.95,
+        "epsilon": 1.0,
+        "epsilon_min": 0.01,
+        "epsilon_decay": 0.9999,
+        "buffer_size": 10000,
+        "batch_size": 32
+    },
+    "training": {
+        "max_episodes": 1000,
+        "eval_interval": 50,
+        "save_interval": 200
+    }
+}
