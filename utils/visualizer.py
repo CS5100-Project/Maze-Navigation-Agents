@@ -1,9 +1,9 @@
+import os
+from datetime import datetime
+from typing import Dict, List, Optional
+
 import matplotlib.pyplot as plt
 import numpy as np
-from typing import List, Dict, Optional
-import seaborn as sns
-from datetime import datetime
-import os
 
 
 class TrainingVisualizer:
@@ -55,7 +55,7 @@ class TrainingVisualizer:
         Args:
             implementation: String indicating which implementation ("gym" or "custom")
         """
-        plt.style.use("seaborn")
+        plt.style.use("default")
         fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(12, 15))
 
         # Plot episode rewards
@@ -122,7 +122,7 @@ class TrainingVisualizer:
             custom_metrics: Dictionary containing metrics from custom implementation
             gym_metrics: Dictionary containing metrics from gym implementation
         """
-        plt.style.use("seaborn")
+        plt.style.use("default")
         fig, axes = plt.subplots(2, 2, figsize=(15, 15))
 
         # Success Rate Comparison

@@ -1,10 +1,11 @@
-import gym
-from gym import spaces
-import numpy as np
 import random
-import pygame
 import time
-from typing import Optional, List, Tuple, Dict
+from typing import Dict, List, Optional, Tuple
+
+import gym
+import numpy as np
+import pygame
+from gym import spaces
 
 
 class MazeEnv(gym.Env):

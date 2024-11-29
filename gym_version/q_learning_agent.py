@@ -1,9 +1,10 @@
-import numpy as np
-from collections import defaultdict, deque
-import pickle
-from typing import Dict, Tuple, List
-import random
 import os
+import pickle
+import random
+from collections import defaultdict, deque
+from typing import Dict, List, Tuple
+
+import numpy as np
 
 
 class QLearningAgent:
