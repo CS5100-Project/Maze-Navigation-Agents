@@ -46,12 +46,27 @@ class ExperimentManager:
 
     def setup_directories(self) -> None:
         """Create necessary directories for saving results."""
+        # Get the project root directory
         project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+        # Get version name from class location
+        version = (
+            "gym_version"
+            if "gym_version" in os.path.abspath(__file__)
+            else "custom_version"
+        )
+
+        # Define directories relative to project root
         self.dirs = {
-            "checkpoints": os.path.join(project_root, "experiments", "checkpoints"),
-            "plots": os.path.join(project_root, "experiments", "plots"),
-            "configs": os.path.join(project_root, "experiments", "configs"),
+            "checkpoints": os.path.join(
+                project_root, "experiments", version, "checkpoints"
+            ),
+            "plots": os.path.join(project_root, "experiments", version, "plots"),
+            "configs": os.path.join(project_root, "experiments", version, "configs"),
+            "logs": os.path.join(project_root, "experiments", version, "logs"),
         }
+
+        # Create each directory
         for dir_path in self.dirs.values():
             os.makedirs(dir_path, exist_ok=True)
 
@@ -85,7 +100,12 @@ class ExperimentManager:
 
             if episode % save_interval == 0:
                 self.save_checkpoint(episode)
-                self.visualizer.plot_training_curves(implementation="gym")
+                self.visualizer.plot_training_curves(
+                    save_path=os.path.join(
+                        self.dirs["plots"], f"{self.exp_name}_training_curves.png"
+                    ),
+                    implementation="gym",
+                )
 
             if metrics["success_rate"] >= 0.95 and episode >= 100:
                 print("\nEarly stopping: 95% success rate achieved!")
@@ -96,8 +116,16 @@ class ExperimentManager:
 
         self.evaluate()
         self.save_checkpoint("final")
-        self.visualizer.plot_training_curves(implementation="gym")
-        self.visualizer.save_metrics(implementation="gym")
+        self.visualizer.plot_training_curves(
+            save_path=os.path.join(
+                self.dirs["plots"], f"{self.exp_name}_training_curves.png"
+            ),
+            implementation="gym",
+        )
+        self.visualizer.save_metrics(
+            save_path=os.path.join(self.dirs["logs"], f"{self.exp_name}_metrics.npy"),
+            implementation="gym",
+        )
 
     def run_episode(self, training: bool = True) -> Tuple[float, int, bool]:
         state = self.env.reset()
@@ -146,6 +174,7 @@ class ExperimentManager:
         print(f"Success Rate: {success_rate:.2%}\n")
 
     def save_checkpoint(self, episode) -> None:
+        """Save a checkpoint of the agent and training progress."""
         checkpoint_path = os.path.join(
             self.dirs["checkpoints"], f"{self.exp_name}_episode_{episode}.pkl"
         )

@@ -1,3 +1,4 @@
+import pickle
 import random
 from collections import defaultdict, deque
 from typing import Dict, Tuple
@@ -98,3 +99,31 @@ class QLearningAgent:
             "q_table_size": len(self.q_table),
             "buffer_size": len(self.replay_buffer),
         }
+
+    def save(self, filepath: str) -> None:
+        """Save the agent's state."""
+        save_dict = {
+            "q_table": dict(self.q_table),  # Convert defaultdict to regular dict
+            "epsilon": self.epsilon,
+            "training_rewards": self.training_rewards,
+            "training_steps": self.training_steps,
+            "total_steps": self.total_steps,
+            "episodes_completed": self.episodes_completed,
+        }
+        with open(filepath, "wb") as f:
+            pickle.dump(save_dict, f)
+
+    def load(self, filepath: str) -> None:
+        """Load the agent's state."""
+        with open(filepath, "rb") as f:
+            save_dict = pickle.load(f)
+
+        # Convert regular dict back to defaultdict
+        self.q_table = defaultdict(lambda: np.zeros(self.action_space))
+        self.q_table.update(save_dict["q_table"])
+
+        self.epsilon = save_dict["epsilon"]
+        self.training_rewards = save_dict["training_rewards"]
+        self.training_steps = save_dict["training_steps"]
+        self.total_steps = save_dict["total_steps"]
+        self.episodes_completed = save_dict["episodes_completed"]

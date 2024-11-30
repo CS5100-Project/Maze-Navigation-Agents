@@ -1,9 +1,0 @@
-2024-11-28 16:04:52,228 - INFO - Starting training...
-2024-11-28 16:04:52,228 - INFO - Training for 1000 episodes
-2024-11-28 16:04:52,728 - INFO - Episode 10/1000 - Reward: -25.17 - Steps: 100 - Success Rate: 70.00% - Epsilon: 0.951
-2024-11-28 16:04:53,214 - INFO - Episode 20/1000 - Reward: 31.35 - Steps: 39 - Success Rate: 75.00% - Epsilon: 0.907
-2024-11-28 16:04:53,784 - INFO - Episode 30/1000 - Reward: 52.60 - Steps: 51 - Success Rate: 73.33% - Epsilon: 0.858
-2024-11-28 16:04:54,262 - INFO - Episode 40/1000 - Reward: 32.04 - Steps: 76 - Success Rate: 77.50% - Epsilon: 0.818
-2024-11-28 16:04:54,684 - INFO - Episode 50/1000 - Reward: 51.99 - Steps: 63 - Success Rate: 78.00% - Epsilon: 0.786
-2024-11-28 16:04:54,684 - INFO - 
-Starting evaluation...
