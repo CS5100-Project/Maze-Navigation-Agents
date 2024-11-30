@@ -37,7 +37,7 @@ maze_rl/
 │   └── comparison/        # Comparative analysis results
 │
 ├── setup.py               # Project setup script
-├── compare_implementations.py  # Comparison script
+├── run.py  # Comparison script
 └── requirements.txt       # Project dependencies
 ```
 
@@ -102,7 +102,7 @@ python custom_version/train.py
 
 ### Running Both Implementations Simultaneously
 ```bash
-python compare_implementations.py
+python run.py
 ```
 
 ### Configuration
