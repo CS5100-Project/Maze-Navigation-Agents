@@ -110,30 +110,7 @@ class MazeEnv(gym.Env):
         """
         Move the random walls if enabled
         """
-        if not self.enable_moving_walls:
-            return
-
-        for _ in range(self.num_obstacles // 2):
-            wall_positions = np.where(self.walls)
-            if len(wall_positions[0]) > 0:
-                idx = random.randint(0, len(wall_positions[0]) - 1)
-                old_pos = (wall_positions[0][idx], wall_positions[1][idx])
-
-                # Try to move the wall in a random direction
-                directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-                random.shuffle(directions)
-
-                for dx, dy in directions:
-                    new_x, new_y = old_pos[0] + dx, old_pos[1] + dy
-                    if (
-                        0 < new_x < self.maze_size - 1
-                        and 0 < new_y < self.maze_size - 1
-                        and not self.walls[new_x, new_y]
-                    ):
-                        self.walls[old_pos] = False
-                        self.walls[new_x, new_y] = True
-                        break
-
+    
     def _update_goal(self) -> None:
         """
         Update goal position if dynamic goal is enabled.
