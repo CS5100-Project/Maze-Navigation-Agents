@@ -17,10 +17,10 @@ class MazeEnv:
         self.num_obstacles = num_obstacles
         self.max_steps = max_steps
         self.action_space = 4  # Up, Right, Down, Left
-        self.observation_space_shape = (maze_size, maze_size, 3)
+        self.observation_space_shape = (maze_size, maze_size, 4)  # Changed to match gym
 
         # Display parameters
-        self.cell_size = 40
+        self.cell_size = 50  # Changed to match gym
         self.window_size = maze_size * self.cell_size
         self.screen = None
         self.clock = pygame.time.Clock()
@@ -100,20 +100,36 @@ class MazeEnv:
         return obs
 
     def step(self, action: int) -> Tuple[np.ndarray, float, bool, Dict]:
-        """Execute one environment step."""
         self.steps_taken += 1
 
+<<<<<<< HEAD
         # Movement directions (Up, Right, Down, Left)
+=======
+>>>>>>> e5b64e52e610db8902661bc58df26d2a44422d33
         directions = [(-1, 0), (0, 1), (1, 0), (0, -1)]
         dx, dy = directions[action]
         new_pos = (self.agent_pos[0] + dx, self.agent_pos[1] + dy)
 
+<<<<<<< HEAD
         # Initialize reward and info
         reward = -0.1  # Small negative reward for each step
         done = False
         info = {}
 
         # Check if move is valid
+=======
+        reward = -0.01
+        done = False
+        info = {}
+
+        old_distance = abs(self.agent_pos[0] - self.goal_pos[0]) + abs(
+            self.agent_pos[1] - self.goal_pos[1]
+        )
+        new_distance = abs(new_pos[0] - self.goal_pos[0]) + abs(
+            new_pos[1] - self.goal_pos[1]
+        )
+
+>>>>>>> e5b64e52e610db8902661bc58df26d2a44422d33
         if (
             0 <= new_pos[0] < self.maze_size
             and 0 <= new_pos[1] < self.maze_size
@@ -121,18 +137,36 @@ class MazeEnv:
         ):
             self.agent_pos = new_pos
 
+<<<<<<< HEAD
             # Check if agent reached goal
+=======
+            # Add distance-based rewards
+            if new_distance < old_distance:
+                reward += 1.0
+            elif new_distance > old_distance:
+                reward -= 0.5
+
+>>>>>>> e5b64e52e610db8902661bc58df26d2a44422d33
             if new_pos == self.goal_pos:
-                reward = 10.0
+                reward = 50.0
                 done = True
                 info["success"] = True
         else:
+<<<<<<< HEAD
             reward = -1.0  # Penalty for hitting wall
             info["wall_collision"] = True
 
         # Check for timeout
         if self.steps_taken >= self.max_steps:
             done = True
+=======
+            reward = -1.0  # Wall collision
+            info["wall_collision"] = True
+
+        if self.steps_taken >= self.max_steps:
+            done = True
+            reward = -10.0  # Timeout penalty
+>>>>>>> e5b64e52e610db8902661bc58df26d2a44422d33
             info["timeout"] = True
 
         return self._get_observation(), reward, done, info
