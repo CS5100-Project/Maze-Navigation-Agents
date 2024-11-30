@@ -180,7 +180,6 @@ class ExperimentManager:
 
 
 def main():
-    # Using same configuration as gym version for fair comparison
     env_config = {
         "maze_size": 4,
         "num_obstacles": 1,
