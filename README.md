@@ -66,8 +66,8 @@ maze_rl/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/maze_rl.git
-cd maze_rl
+git clone https://github.com/CS5100-Project/Maze-Navigation-Agents.git
+cd Maze-Navigation-Agents
 ```
 
 2. Create and activate a virtual environment:
