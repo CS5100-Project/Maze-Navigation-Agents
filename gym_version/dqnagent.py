@@ -176,30 +176,40 @@ class DQNetwork(nn.Module):
     def __init__(self, input_shape, num_actions):
         super(DQNetwork, self).__init__()
         c, h, w = input_shape
-        print(f"Initializing DQNetwork with input_shape: channels={c}, height={h}, width={w}")
-        # print(f"Stack trace:\n{traceback.format_stack()}")
-        print(f"Input shape: channels={c}, height={h}, width={w}")
 
         self.features = nn.Sequential(
             nn.Conv2d(in_channels=c, out_channels=32, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(32),
             nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),
             nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(64),
             nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),
             nn.Flatten(),
         )
 
-        print(f"First Conv2d in_channels: {self.features[0].in_channels}")
-        print(f"First Conv2d out_channels: {self.features[0].out_channels}")
+        conv_out_size = 64 * (h // 4) * (w // 4)
 
-        conv_out_size = 64 * h * w
-
-        self.fc = nn.Sequential(
+        # Value Stream
+        self.value_stream = nn.Sequential(
             nn.Linear(conv_out_size, 256),
             nn.ReLU(),
+            nn.Dropout(p=0.5),
+            nn.Linear(256, 1),
+        )
+
+        # Advantage Stream
+        self.advantage_stream = nn.Sequential(
+            nn.Linear(conv_out_size, 256),
+            nn.ReLU(),
+            nn.Dropout(p=0.5),
             nn.Linear(256, num_actions),
         )
 
     def forward(self, x):
-        #print(f"Forward pass input shape: {x.shape}")  
         x = self.features(x)
-        return self.fc(x)
+        value = self.value_stream(x)
+        advantage = self.advantage_stream(x)
+        q_vals = value + (advantage - advantage.mean(dim=1, keepdim=True))
+        return q_vals
