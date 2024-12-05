@@ -43,7 +43,7 @@ class MazeEnv(gym.Env):
         # Define action and observation space
         self.action_space = spaces.Discrete(4)
         self.observation_space = spaces.Box(
-            low=0, high=1, shape=(self.maze_size, self.maze_size, 4), dtype=np.float32
+            low=-self.maze_size, high=self.maze_size, shape=(2,), dtype=np.float32
         )
 
         # Rendering
