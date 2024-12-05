@@ -1,7 +1,7 @@
 # dqn_agent.py
-import traceback
-import os   
+import os
 import random
+import traceback
 from collections import deque
 from typing import Tuple
 
@@ -66,8 +66,12 @@ class DQNAgent:
 
         # Initialize networks
         print(f"state_shape in DQNAgent: {self.state_shape}")
-        self.policy_net = DQNetwork(input_shape=self.state_shape, num_actions=action_size).to(self.device)
-        self.target_net = DQNetwork(input_shape=self.state_shape, num_actions=action_size).to(self.device)
+        self.policy_net = DQNetwork(
+            input_shape=self.state_shape, num_actions=action_size
+        ).to(self.device)
+        self.target_net = DQNetwork(
+            input_shape=self.state_shape, num_actions=action_size
+        ).to(self.device)
         self.target_net.load_state_dict(self.policy_net.state_dict())
         self.target_net.eval()
 
@@ -87,7 +91,9 @@ class DQNAgent:
         if state.shape != self.state_shape:
             state = np.transpose(state, (2, 0, 1))  # From (H, W, C) to (C, H, W)
         if next_state.shape != self.state_shape:
-            next_state = np.transpose(next_state, (2, 0, 1))  # From (H, W, C) to (C, H, W)
+            next_state = np.transpose(
+                next_state, (2, 0, 1)
+            )  # From (H, W, C) to (C, H, W)
         self.memory.append((state, action, reward, next_state, done))
 
     def select_action(self, state, eval_mode=False):
@@ -95,7 +101,9 @@ class DQNAgent:
         # Ensure state is in (channels, height, width) format
         if state.shape != self.state_shape:
             state = np.transpose(state, (2, 0, 1))  # From (H, W, C) to (C, H, W)
-        state = torch.FloatTensor(state).unsqueeze(0).to(self.device)  # Add batch dimension
+        state = (
+            torch.FloatTensor(state).unsqueeze(0).to(self.device)
+        )  # Add batch dimension
         if eval_mode or random.random() > self.epsilon:
             with torch.no_grad():
                 q_values = self.policy_net(state)
@@ -119,9 +127,13 @@ class DQNAgent:
 
         # Ensure states are in (batch_size, channels, height, width)
         if states.shape[1:] != self.state_shape:
-            states = np.transpose(states, (0, 3, 1, 2))  # From (N, H, W, C) to (N, C, H, W)
+            states = np.transpose(
+                states, (0, 3, 1, 2)
+            )  # From (N, H, W, C) to (N, C, H, W)
         if next_states.shape[1:] != self.state_shape:
-            next_states = np.transpose(next_states, (0, 3, 1, 2))  # From (N, H, W, C) to (N, C, H, W)
+            next_states = np.transpose(
+                next_states, (0, 3, 1, 2)
+            )  # From (N, H, W, C) to (N, C, H, W)
 
         states = torch.FloatTensor(states).to(self.device)
         next_states = torch.FloatTensor(next_states).to(self.device)
@@ -156,20 +168,23 @@ class DQNAgent:
 
     def save(self, filepath):
         """Save the model and optimizer state."""
-        torch.save({
-            'policy_net_state_dict': self.policy_net.state_dict(),
-            'target_net_state_dict': self.target_net.state_dict(),
-            'optimizer_state_dict': self.optimizer.state_dict(),
-            'epsilon': self.epsilon,
-        }, filepath)
+        torch.save(
+            {
+                "policy_net_state_dict": self.policy_net.state_dict(),
+                "target_net_state_dict": self.target_net.state_dict(),
+                "optimizer_state_dict": self.optimizer.state_dict(),
+                "epsilon": self.epsilon,
+            },
+            filepath,
+        )
 
     def load(self, filepath):
         """Load the model and optimizer state."""
         checkpoint = torch.load(filepath, map_location=self.device)
-        self.policy_net.load_state_dict(checkpoint['policy_net_state_dict'])
-        self.target_net.load_state_dict(checkpoint['target_net_state_dict'])
-        self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-        self.epsilon = checkpoint.get('epsilon', self.epsilon)
+        self.policy_net.load_state_dict(checkpoint["policy_net_state_dict"])
+        self.target_net.load_state_dict(checkpoint["target_net_state_dict"])
+        self.optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+        self.epsilon = checkpoint.get("epsilon", self.epsilon)
 
 
 class DQNetwork(nn.Module):
@@ -178,11 +193,15 @@ class DQNetwork(nn.Module):
         c, h, w = input_shape
 
         self.features = nn.Sequential(
-            nn.Conv2d(in_channels=c, out_channels=32, kernel_size=3, stride=1, padding=1),
+            nn.Conv2d(
+                in_channels=c, out_channels=32, kernel_size=3, stride=1, padding=1
+            ),
             nn.BatchNorm2d(32),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2),
-            nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=1, padding=1),
+            nn.Conv2d(
+                in_channels=32, out_channels=64, kernel_size=3, stride=1, padding=1
+            ),
             nn.BatchNorm2d(64),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2),

@@ -6,9 +6,9 @@ from typing import Tuple
 
 import numpy as np
 import torch
+from dqn_agent import DQNAgent
 
 from gym_version.maze_env import MazeEnv
-from dqn_agent import DQNAgent
 
 
 class DQNExperimentManager:
@@ -24,17 +24,25 @@ class DQNExperimentManager:
 
         # Create environment and agent
         self.env = MazeEnv(**env_config)
-        state_dim = self.env.observation_space.shape[0]  # Should be 2 for a 2D state vector
+        state_dim = self.env.observation_space.shape[
+            0
+        ]  # Should be 2 for a 2D state vector
 
         # Obtain a sample observation
         sample_state = self.env.reset()
         print("Sample state shape:", sample_state.shape)
         print("Observation space:", self.env.observation_space)
-        print("Action space:", self.env.action_space)  # Should display the action space details
+        print(
+            "Action space:", self.env.action_space
+        )  # Should display the action space details
 
         # Define state_shape based on sample_state
         # Rearrange to (channels, height, width)
-        state_shape = (sample_state.shape[2], sample_state.shape[0], sample_state.shape[1])  # (4, 8, 8)
+        state_shape = (
+            sample_state.shape[2],
+            sample_state.shape[0],
+            sample_state.shape[1],
+        )  # (4, 8, 8)
         print(f"state_shape after rearrangement: {state_shape}")
 
         self.agent = DQNAgent(
@@ -107,7 +115,9 @@ class DQNExperimentManager:
         while not done:
             # Ensure state is in (channels, height, width) format
             if state.shape != self.agent.state_shape:
-                state_processed = np.transpose(state, (2, 0, 1))  # From (H, W, C) to (C, H, W)
+                state_processed = np.transpose(
+                    state, (2, 0, 1)
+                )  # From (H, W, C) to (C, H, W)
             else:
                 state_processed = state
 
@@ -116,24 +126,27 @@ class DQNExperimentManager:
 
             # Ensure next_state is in (channels, height, width) format
             if next_state.shape != self.agent.state_shape:
-                next_state_processed = np.transpose(next_state, (2, 0, 1))  # From (H, W, C) to (C, H, W)
+                next_state_processed = np.transpose(
+                    next_state, (2, 0, 1)
+                )  # From (H, W, C) to (C, H, W)
             else:
                 next_state_processed = next_state
 
             # Rearrange state to (channels, height, width)
-            #state_processed = np.transpose(state, (2, 0, 1))
+            # state_processed = np.transpose(state, (2, 0, 1))
             # Normalize if necessary (e.g., if state values are between 0 and 1, skip normalization)
             # If state values are between 0 and 255 (typical for images), normalize by dividing by 255.0
-            #state_processed = state_processed / 255.0
+            # state_processed = state_processed / 255.0
             # Convert to float32 if necessary
-            #state_processed = state_processed.astype(np.float32)
+            # state_processed = state_processed.astype(np.float32)
 
-            
-            #next_state_processed = np.transpose(next_state, (2, 0, 1))
-            #next_state_processed = next_state_processed / 255.0
+            # next_state_processed = np.transpose(next_state, (2, 0, 1))
+            # next_state_processed = next_state_processed / 255.0
 
             if training:
-                self.agent.remember(state_processed, action, reward, next_state_processed, done)
+                self.agent.remember(
+                    state_processed, action, reward, next_state_processed, done
+                )
                 self.agent.learn()
 
             episode_reward += reward
@@ -178,12 +191,12 @@ class DQNExperimentManager:
 
 def main():
     env_config = {
-        "maze_size": 8,
+        "maze_size": 10,
         "num_obstacles": 10,
-        "max_steps": 200,
-        "enable_moving_walls": False,
-        "dynamic_goal": False,
-        "random_hazards": False,
+        "max_steps": 100,
+        "enable_moving_walls": True,
+        "dynamic_goal": True,
+        "random_hazards": True,
     }
 
     agent_config = {
@@ -191,8 +204,8 @@ def main():
         "gamma": 0.99,
         "epsilon": 1.0,
         "epsilon_min": 0.1,
-        "epsilon_decay": 0.9999,
-        "buffer_size": 10000,
+        "epsilon_decay": 0.9995,
+        "buffer_size": 20000,
         "batch_size": 64,
         "target_update_freq": 1000,
     }
