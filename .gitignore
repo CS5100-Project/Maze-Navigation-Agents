@@ -3,3 +3,4 @@
 experiments/*/checkpoints/*
 .idea/*
 venv/*
+experiments/

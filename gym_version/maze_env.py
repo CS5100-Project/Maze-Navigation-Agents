@@ -64,6 +64,7 @@ class MazeEnv(gym.Env):
         self.visited_states = set()
 
         # Initialize the game
+        pygame.display.set_caption("OpenAI Gym Maze - Moving Walls & Dynamic Goals")
         self.reset()
 
     def _init_display(self):
